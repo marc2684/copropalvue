@@ -15,6 +15,14 @@ npm run build
 ```
 - Es necesario que apache esté activo, para que [Ocrend Framework](https://github.com/prinick96/Ocrend-Framework) funcione.
 
+### Cómo utilizar el sistema de usuarios
+``` bash
+
+# Moverse a la rama que contiene el sistema de usuarios
+git checkout users-system-base
+```
+- Debe existir una previa instalación de la tabla en la base de datos y la configuración de Ocrend.ini.yml
+
 ## Sobre Ocrend Software
 
 - [@web](https://ocrend.com)

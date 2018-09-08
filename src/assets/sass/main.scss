@@ -1,0 +1,60 @@
+/**
+    * Estilos por defecto.
+    * Pueden eliminar todo.
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@-webkit-keyframes ocrendhi {
+    0% {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+@keyframes ocrendhi {
+    0% {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+a {
+    color: #0068a6;
+    transition: color 0.3s;
+
+    &:focus, &:hover {
+        color: #067ebd
+    }
+}
+
+.box-ocrend {
+    opacity: 0;
+    animation: ocrendhi 2s ease-out 0s forwards;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    > div {
+        padding-top: 10px
+    }
+
+    > h1, > p {
+        color: #041830
+    }
+}

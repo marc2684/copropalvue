@@ -30,6 +30,9 @@ npm run build
 
 # Moverse a la rama que contiene el sistema de usuarios
 git checkout users-system-base
+
+# Instalar las nuevas dependencias
+npm install
 ```
 - Debe existir una previa instalación de la tabla en la base de datos y la configuración de Ocrend.ini.yml
 

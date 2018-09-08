@@ -17,7 +17,7 @@ namespace Ocrend\Kernel\Helpers;
  * @author Brayan Narváez <prinick@ocrend.com>
  */
 
-final class Strings {
+class Strings {
 
   /**
    * Convierte un tiempo dado al formato hace 1 minuto, hace 2 horas, hace 1 año ...

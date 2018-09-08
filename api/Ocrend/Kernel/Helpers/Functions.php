@@ -170,41 +170,6 @@ final class Functions {
     return str_replace(array_keys($cambios), array_values($cambios), $date);
   }
 
-  /**
-   *  Devuelve la etiqueta <base> html adecuada para que los assets carguen desde allí.
-   *  Se adapta a la configuración del dominio en general.
-   *
-   * @return string <base href="ruta" />
-  */
-  public static function base_assets() : string {
-    global $config, $http;
-
-    # Revisar protocolo
-    $https = 'http://';
-    if($config['router']['ssl']) {
-      # Revisar el protocolo
-      if(true == $http->server->get('HTTPS')
-        || $http->server->get('HTTPS') == 'on' 
-        || $http->server->get('HTTPS') == 1) {
-        $https = 'https://';
-      }
-    }
-
-    # Revisar el path
-    $path = $config['router']['path'];
-    if('/' != substr($path, -1)) {
-      $path .= '/';
-    }
-
-    # Revisar subdominio
-    $www = substr($http->server->get('SERVER_NAME'), 0, 2);
-    $base = $path;
-    if (strtolower($www) == 'www') {
-      $base = 'www.' . $path;
-    }
-  
-    return '<base href="' . $https . $base . '" />';
-  }
   
   /**
    * Obtiene el último día de un mes específico

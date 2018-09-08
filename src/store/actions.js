@@ -1,15 +1,16 @@
+import { router } from '../main'
 import axios from 'axios'
 
 export const actions = {
     /**
      * Inicia la sesión de un usuario en todo el sistema.
      * 
-     * @param {*} data : { router , otra data... }
+     * @param {*} data
      */
     login({ commit, state }, data) {
         axios.get(state.api + 'users/' + data.id_user)
         .then((response) => {
-            state.$router.push('/')
+            router.push('/')
             commit('loginUser', response.data);
         })
         .catch((error) => {
@@ -20,7 +21,7 @@ export const actions = {
     /**
      * Refresca la información del usuario conectado, sólo si está conectado
      * 
-     * @param {*} data : { router , otra data... }
+     * @param {*} data 
      */
     refreshOwnerUser({ commit, state }, data) {
         let id_user = localStorage.getItem('id_user');

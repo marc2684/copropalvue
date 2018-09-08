@@ -1,3 +1,5 @@
+import { router } from '../main'
+
 export const mutations = {
     /**
      * Modifica el estado de login de un usuario, y su data
@@ -19,7 +21,7 @@ export const mutations = {
         localStorage.removeItem('id_user');
         state.is_logged = false;
         state.owner_user = null;
-        state.$router.push('/login')
+        router.push('/login')
     },
 
     /**
@@ -29,7 +31,7 @@ export const mutations = {
      */
     onlyNotLogged(state) {
         if(state.is_logged) {
-            state.$router.push('/')
+            router.push('/')
         }
     },
 
@@ -40,7 +42,7 @@ export const mutations = {
      */
     onlyLogged(state) {
         if(!state.is_logged) {
-            state.$router.push('/login')
+           router.push('/login')
         }
     }
 }

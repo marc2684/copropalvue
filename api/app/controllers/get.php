@@ -23,3 +23,13 @@ use Symfony\Component\HttpFoundation\Response;
 $app->get('/', function(Request $http) use($app) {
     return $app->json(['message' => 'Vue.js + OCREND FRAMEWORK 3 REST']);  
 });
+
+/**
+ * Retorna la información del usuario conectado actualmente
+ * 
+ * @return json
+ */
+$app->get('/users/{id}', function(Request $http, $id) use($app) {
+    $u = new Model\Users;
+    return $app->json($u->getUserById($id));  
+})->assert('id', '\d+');;

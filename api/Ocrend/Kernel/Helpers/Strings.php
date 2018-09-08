@@ -17,7 +17,7 @@ namespace Ocrend\Kernel\Helpers;
  * @author Brayan Narváez <prinick@ocrend.com>
  */
 
-final class Strings extends \Twig_Extension {
+final class Strings {
 
   /**
    * Convierte un tiempo dado al formato hace 1 minuto, hace 2 horas, hace 1 año ...
@@ -321,39 +321,4 @@ final class Strings extends \Twig_Extension {
     return (int) str_word_count($s,0,'0..9_');
   }
 
-  /**
-   * Se obtiene de Twig_Extension y sirve para que cada función esté disponible como etiqueta en twig
-   *
-   * @return array Todas las funciones con sus respectivos nombres de acceso en plantillas twig
-   */
-  public function getFunctions() : array {
-    return array(
-      new \Twig_Function('amigable_time', array($this, 'amigable_time')),
-      new \Twig_Function('chash', array($this, 'chash')),
-      new \Twig_Function('hash', array($this, 'hash')),
-      new \Twig_Function('date_difference', array($this, 'date_difference')),
-      new \Twig_Function('calculate_age', array($this, 'calculate_age')),
-      new \Twig_Function('days_of_month', array($this, 'days_of_month')),
-      new \Twig_Function('is_email', array($this, 'is_email')),
-      new \Twig_Function('remove_spaces', array($this, 'remove_spaces')),
-      new \Twig_Function('alphanumeric', array($this, 'alphanumeric')),
-      new \Twig_Function('only_letters', array($this, 'only_letters')),
-      new \Twig_Function('letters_and_numbers', array($this, 'letters_and_numbers')),
-      new \Twig_Function('url_amigable', array($this, 'url_amigable')),
-      new \Twig_Function('bbcode', array($this, 'bbcode')),
-      new \Twig_Function('begin_with', array($this, 'begin_with')),
-      new \Twig_Function('end_with', array($this, 'end_with')),
-      new \Twig_Function('contain', array($this, 'contain')),
-      new \Twig_Function('count_words', array($this, 'count_words'))
-    );
-  }
-
-  /**
-   * Identificador único para la extensión de twig
-   *
-   * @return string Nombre de la extensión
-  */
-  public function getName() : string {
-    return 'ocrend_framework_helper_strings';
-  }
 }

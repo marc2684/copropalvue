@@ -231,7 +231,10 @@ class Users extends Models implements IModels {
      * @return false|array con información del usuario
      */   
     public function getUserById(int $id, string $select = '*') {
-        return $this->db->select($select,'users',null,"id_user='$id'",1);
+        return $this->apiResponse(
+            $this->db->select($select,'users',null,"id_user='$id'",1),
+            true
+        );
     }
     
     /**
@@ -243,30 +246,6 @@ class Users extends Models implements IModels {
      */  
     public function getUsers(string $select = '*') {
         return $this->db->select($select, 'users');
-    }
-
-    /**
-     * Obtiene datos del usuario conectado actualmente
-     *
-     * @param string $select : Por defecto es *, se usa para obtener sólo los parámetros necesarios
-     *
-     * @throws ModelsException si el usuario no está logeado
-     * @return array con datos del usuario conectado
-     */
-    public function getOwnerUser(string $select = '*') : array {
-        if(null !== $this->id_user) {    
-               
-            $user = $this->db->select($select,'users',null, "id_user='$this->id_user'",1);
-
-            # Si se borra al usuario desde la base de datos y sigue con la sesión activa
-            if(false === $user) {
-                $this->logout();
-            }
-
-            return $user[0];
-        } 
-           
-        throw new \RuntimeException('El usuario no está logeado.');
     }
 
      /**
@@ -327,7 +306,7 @@ class Users extends Models implements IModels {
             if (Helper\Functions::e($name, $email, $pass, $pass_repeat)) {
                 throw new ModelsException('Todos los datos son necesarios');
             }
-
+            
             # Verificar email 
             $this->checkEmail($email);
 
@@ -346,7 +325,7 @@ class Users extends Models implements IModels {
                 'id_user' => $id_user
             ]);
 
-            return ['success' => 1, 'message' => 'Registrado con éxito.'];
+            return ['success' => 1, 'message' => 'Registrado con éxito.', 'id_user' => $id_user];
         } catch (ModelsException $e) {
             return ['success' => 0, 'message' => $e->getMessage()];
         }        
@@ -482,7 +461,7 @@ class Users extends Models implements IModels {
      * Uso manual, ELIMINAR una vez terminado
      */
     public function install() {
-        $db->query("CREATE TABLE IF NOT EXISTS `users` (
+        $this->db->query("CREATE TABLE IF NOT EXISTS `users` (
             `id_user` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
             `name` varchar(100) NOT NULL,
             `email` varchar(150) UNIQUE NOT NULL,

@@ -13,7 +13,6 @@ const router = new VueRouter({
   routes
 });
 
-
 // Iniciar la app
 new Vue({
   el: '#app',

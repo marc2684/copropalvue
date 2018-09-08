@@ -16,10 +16,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Root
+ * Registra un nuevo usuario
  * 
  * @return json con información
 */
-$app->post('/', function(Request $http) use($app) {
-    return $app->json([]);  
+$app->post('/register', function(Request $http) use($app) {
+    $u = new Model\Users;
+    return $app->json($u->register());  
+});
+
+/**
+ * Registra un nuevo usuario
+ * 
+ * @return json con información
+*/
+$app->post('/login', function(Request $http) use($app) {
+    $u = new Model\Users;
+    return $app->json($u->login());  
 });

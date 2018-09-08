@@ -17,7 +17,7 @@ namespace Ocrend\Kernel\Helpers;
  * @author Brayan Narváez <prinick@ocrend.com>
  */
 
-final class Functions extends \Twig_Extension {
+final class Functions {
 
   /**
    * Verifica parte de una fecha, método privado usado en str_to_time
@@ -322,36 +322,4 @@ final class Functions extends \Twig_Extension {
     return time();
   }
 
-  /**
-   * Se obtiene de Twig_Extension y sirve para que cada función esté disponible como etiqueta en twig
-   *
-   * @return array con todas las funciones con sus respectivos nombres de acceso en plantillas twig
-   */
-  public function getFunctions() : array {
-    return array(
-       new \Twig_Function('percent', array($this, 'percent')),
-       new \Twig_Function('convert', array($this, 'convert')),
-       new \Twig_Function('get_gravatar', array($this, 'get_gravatar')),
-       new \Twig_Function('emp', array($this, 'emp')),
-       new \Twig_Function('e_dynamic', array($this, 'e')),
-       new \Twig_Function('all_full', array($this, 'all_full')),
-       new \Twig_Function('fecha', array($this, 'fecha')),
-       new \Twig_Function('base_assets', array($this, 'base_assets')),
-       new \Twig_Function('timestamp', array($this, 'timestamp')),
-       new \Twig_Function('desde_date', array($this, 'desde_date')),
-       new \Twig_Function('cero_izq', array($this, 'cero_izq')),
-       new \Twig_Function('last_day_month', array($this, 'last_day_month')),
-       new \Twig_Function('str_to_time', array($this, 'str_to_time')),
-       new \Twig_Function('desde_date', array($this, 'desde_date'))
-    );
-   }
-
-  /**
-   * Identificador único para la extensión de twig
-   *
-   * @return string con el nombre de la extensión
-   */
-  public function getName() : string {
-        return 'ocrend_framework_func_class';
-  }
 }

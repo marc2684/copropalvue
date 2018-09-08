@@ -21,6 +21,9 @@ export default {
         welcome : null
       }
     },
+    beforeCreate() {
+        this.$store.commit('onlyLogged', this.$router);
+    },
     mounted() {
       axios.get(this.$store.state.api)
         .then((response) => {

@@ -29,6 +29,7 @@ mailer:
   
 # Configuración del sitio
 build:
+  url: http://localhost:8080/#/
   production: false
   name: Ocrend Framework 3
   timezone: America/Bogota

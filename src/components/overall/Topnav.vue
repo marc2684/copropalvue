@@ -6,8 +6,8 @@
             </div>
             <ul class="menu">
                 <template v-if="!isLogged">
-                    <li><router-link to="/login">Iniciar</router-link></li>
-                    <li><router-link to="/register">Registro</router-link></li>
+                    <li><router-link to="/login" exact>Iniciar</router-link></li>
+                    <li><router-link to="/register" exact>Registro</router-link></li>
                 </template>
                 <template v-else>
                     <li>Hola, <strong>{{ ownerUser.name }}</strong></li>
@@ -73,7 +73,7 @@ export default {
                         color: white!important;
                         text-decoration: none;
 
-                        &:hover, &:focus {
+                        &:hover, &:focus, &.router-link-active {
                             opacity: 1;
                         }
                     }

@@ -21,5 +21,5 @@ use Symfony\Component\HttpFoundation\Response;
  * @return json con información
  */
 $app->get('/', function(Request $http) use($app) {
-    return $app->json(['message' => 'Vue.js + Ocrend Framework 3']);  
+    return $app->json(['message' => 'Vue.js + OCREND FRAMEWORK 3 REST']);  
 });

@@ -17,7 +17,7 @@ namespace Ocrend\Kernel\Helpers;
  * @author Brayan Narváez <prinick@ocrend.com>
  */
 
-class Files extends \Twig_Extension {
+class Files {
 
   /**
    * Devuelve un string con el contenido de un archivo
@@ -242,31 +242,6 @@ class Files extends \Twig_Extension {
         unlink($file);
       }
     }
-  }
-
-  /**
-   * Se obtiene de Twig_Extension y sirve para que cada función esté disponible como etiqueta en twig
-   *
-   * @return array con todas las funciones con sus respectivos nombres de acceso en plantillas twig
-   */
-  public function getFunctions() : array {
-    return array(
-      new \Twig_Function('images_in_dir', array($this, 'images_in_dir')),
-      new \Twig_Function('get_files_in_dir', array($this, 'get_files_in_dir')),
-      new \Twig_Function('date_file', array($this, 'date_file')),
-      new \Twig_Function('file_size', array($this, 'file_size')),
-      new \Twig_Function('is_image', array($this, 'is_image')),
-      new \Twig_Function('get_file_ext', array($this, 'get_file_ext'))
-    );
-  }
-
-  /**
-   * Identificador único para la extensión de twig
-   *
-   * @return string con el nombre de la extensión
-   */
-  public function getName() : string {
-    return 'ocrend_framework_helper_files';
   }
 
 }

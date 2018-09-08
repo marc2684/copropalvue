@@ -17,7 +17,7 @@ namespace Ocrend\Kernel\Helpers;
  * @author Brayan Narváez <prinick@ocrend.com>
  */
 
-class Arrays extends \Twig_Extension {
+class Arrays {
 
   /**
    * Suma los contenidos del segundo arreglo en el primer arreglo, en las coincidencias de llaves.
@@ -154,31 +154,6 @@ class Arrays extends \Twig_Extension {
     }
 
     return $returnArray;
-  }
-
-  /**
-   * Se obtiene de Twig_Extension y sirve para que cada función esté disponible como etiqueta en twig
-   *
-   * @return array con todas las funciones con sus respectivos nombres de acceso en plantillas twig
-   */
-  public function getFunctions() : array {
-    return array(
-      new \Twig_Function('get_key_by_index', array($this, 'get_key_by_index')),
-      new \Twig_Function('unique_array', array($this, 'unique_array')),
-      new \Twig_Function('is_assoc', array($this, 'is_assoc')),
-      new \Twig_Function('is_numeric_array', array($this, 'is_numeric_array')),
-      new \Twig_Function('array_random_element', array($this, 'array_random_element')),
-      new \Twig_Function('arrays_sum', array($this, 'arrays_sum'))
-    );
-  }
-
-  /**
-   * Identificador único para la extensión de twig
-   *
-   * @return string con el nombre de la extensión
-   */
-  public function getName() : string {
-    return 'ocrend_framework_helper_arrays';
   }
 
 }

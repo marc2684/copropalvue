@@ -20,7 +20,7 @@ import axios from 'axios'
 export default {
     name : 'Lostpass',
     beforeCreate() {
-        this.$store.commit('onlyNotLogged', this.$router);
+        this.$store.commit('onlyNotLogged');
     },
     data() {
         return {

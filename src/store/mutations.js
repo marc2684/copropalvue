@@ -15,23 +15,21 @@ export const mutations = {
      * 
      * @param {*} state 
      */
-    logoutUser(state, router) {
+    logoutUser(state) {
         localStorage.removeItem('id_user');
         state.is_logged = false;
         state.owner_user = null;
-        router.push('/login')
+        state.$router.push('/login')
     },
 
     /**
      * Si el usuario está conectado, lo envía al home
      * 
      * @param {*} state 
-     * @param {*} router (this.$router) desde un beforeCreate() en el component 
      */
-    onlyNotLogged(state, router) {
-        console.log(router);
+    onlyNotLogged(state) {
         if(state.is_logged) {
-            router.push('/')
+            state.$router.push('/')
         }
     },
 
@@ -39,11 +37,10 @@ export const mutations = {
      * Si el usuario no está conectado, lo manda al login
      * 
      * @param {*} state 
-     * @param {*} router (this.$router) desde un beforeCreate() en el component 
      */
-    onlyLogged(state, router) {
+    onlyLogged(state) {
         if(!state.is_logged) {
-            router.push('/login')
+            state.$router.push('/login')
         }
     }
 }

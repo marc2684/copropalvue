@@ -11,7 +11,7 @@ export default {
     props: ['token', 'user'],
     name : 'Recovery',
     beforeCreate() {
-        this.$store.commit('onlyNotLogged', this.$router);
+        this.$store.commit('onlyNotLogged');
     },
     mounted() {
         // Verificar props

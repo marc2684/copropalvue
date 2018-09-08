@@ -7,7 +7,7 @@ export default {
     name: 'Logout',
     methods: {
         logout() {
-            this.$store.commit('logoutUser', this.$router);
+            this.$store.commit('logoutUser');
         }
     }    
 }

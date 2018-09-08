@@ -9,7 +9,7 @@ export const actions = {
     login({ commit, state }, data) {
         axios.get(state.api + 'users/' + data.id_user)
         .then((response) => {
-            data.router.push('/')
+            state.$router.push('/')
             commit('loginUser', response.data);
         })
         .catch((error) => {
@@ -38,7 +38,7 @@ export const actions = {
         
         // Si no existe nada en localstorage, deslogeamos
         else {
-            commit('logoutUser', data.router);
+            commit('logoutUser');
         }
     }
 }

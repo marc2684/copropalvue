@@ -32,7 +32,7 @@ import axios from 'axios'
 export default {
     name: 'Register',
     beforeCreate() {
-        this.$store.commit('onlyNotLogged', this.$router);
+        this.$store.commit('onlyNotLogged');
     },
     methods: {
         register() {
@@ -54,7 +54,6 @@ export default {
 
                     // Iniciar sesión en vue
                     this.$store.dispatch('login', {
-                        router : this.$router,
                         id_user : data.id_user
                     });
                 }

@@ -22,7 +22,7 @@ export default {
       }
     },
     beforeCreate() {
-        this.$store.commit('onlyLogged', this.$router);
+        this.$store.commit('onlyLogged');
     },
     mounted() {
       axios.get(this.$store.state.api)

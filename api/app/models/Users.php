@@ -144,7 +144,7 @@ class Users extends Models implements IModels {
      * @return bool true: Cuando el inicio de sesión es correcto 
      *              false: Cuando el inicio de sesión no es correcto
      */
-    private function authentication(string $email,string $pass) : bool {
+    private function authentication(string $email,string $pass, int &$id_user) : bool {
         $email = $this->db->scape($email);
         $query = $this->db->select('id_user,pass','users',null, "email='$email'",1);
         
@@ -156,6 +156,10 @@ class Users extends Models implements IModels {
 
             # Generar la sesión
             $this->generateSession($query[0]);
+
+            # El id
+            $id_user = $query[0]['id_user'];
+
             return true;
         }
 
@@ -276,8 +280,9 @@ class Users extends Models implements IModels {
             $this->maximumAttempts($email);
 
             # Autentificar
-            if ($this->authentication($email, $pass)) {
-                return ['success' => 1, 'message' => 'Conectado con éxito.'];
+            $id_user = 0;
+            if ($this->authentication($email, $pass, $id_user)) {
+                return ['success' => 1, 'message' => 'Conectado con éxito.', 'id_user' => $id_user];
             }
             
             throw new ModelsException('Credenciales incorrectas.');

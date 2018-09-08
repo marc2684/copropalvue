@@ -1,6 +1,16 @@
 ### VUE-OCREND-FRAMEWORK
 - Implementación de vue cli + vuex + vue-router + axios + Ocrend Framework 3 REST (Sin controladores ni rutas)
 
+### Configuración inicial
+- Para la API, es necesario editar en *./src/store/store.js*
+```javascript
+{
+    ...
+    
+    api : 'http://localhost/OCREND/vue-ocrend-framework/api/'
+}
+```
+
 ### Cómo iniciar el setup
 
 ``` bash

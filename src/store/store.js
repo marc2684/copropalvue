@@ -21,7 +21,15 @@ export const store = new Vuex.Store({
          * 
          * @var object
          */
-        owner_user : null
+        owner_user : null,
+
+        /**
+         * Path de ocrend framework.
+         * Debe ser modificado por la url absoluta en donde opere.
+         * 
+         * @var string
+         */
+        api : 'http://localhost/OCREND/vue-ocrend-framework/api/'
     },
     mutations,
     actions

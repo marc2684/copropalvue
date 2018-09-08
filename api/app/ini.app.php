@@ -32,5 +32,4 @@ $app->after(function (Request $request, Response $response) {
     global $config;
 
     $response->headers->set('Access-Control-Allow-Origin', $config['api']['origin']);
-    $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
 });

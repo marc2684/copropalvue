@@ -33,3 +33,13 @@ $app->get('/users/{id}', function(Request $http, $id) use($app) {
     $u = new Model\Users;
     return $app->json($u->getUserById($id));  
 })->assert('id', '\d+');;
+
+/**
+ * Confirma el cambio de contraseña
+ * 
+ * @return json con información
+*/
+$app->get('/lostpass/recovery', function(Request $http) use($app) {
+    $u = new Model\Users;
+    return $app->json($u->changeTemporalPass());  
+});

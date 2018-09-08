@@ -17,16 +17,25 @@ export default {
         // Verificar props
         if(this.token != undefined && this.user != undefined) {
             
-            axios.put(this.$store.state.api + 'lostpass/recovery',{
-                token : this.token,
-                user: this.user
-            },{
+            axios.get(this.$store.state.api + 'lostpass/recovery?token=' + this.token + '&user=' + this.user,{
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
             .then((response) => {
-                console.log(response);              
+                if(response.data.success) {
+                    this.message = 'Contraseña cambiada, ahora puede iniciar sesión.';
+                    setTimeout(() => {
+                        this.$router.push('/login');
+                    }, 3500);  
+                }  
+                
+                else {
+                    this.message = 'El enlace ha caducado';
+                    setTimeout(() => {
+                        this.$router.push('/');
+                    }, 3500);                 
+                }
             })
             .catch((error) => {
                 console.log(error)

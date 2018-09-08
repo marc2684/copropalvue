@@ -44,4 +44,3 @@ $app->post('/lostpass/send', function(Request $http) use($app) {
     $u = new Model\Users;
     return $app->json($u->lostpass());  
 });
-

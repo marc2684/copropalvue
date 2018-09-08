@@ -450,7 +450,7 @@ class Users extends Models implements IModels {
         $token = $http->query->get('token');
 
         $success = false;
-        /*if (!Helper\Functions::emp($token) && is_numeric($id_user) && $id_user >= 1) {
+        if (!Helper\Functions::emp($token) && is_numeric($id_user) && $id_user >= 1) {
             # Filtros a los datos
             $id_user = $this->db->scape($id_user);
             $token = $this->db->scape($token);
@@ -459,9 +459,9 @@ class Users extends Models implements IModels {
             WHERE id_user='$id_user' AND token='$token' LIMIT 1;");
             # Éxito
             $success = true;
-        }*/
+        }
         
-        return ['success' => $success];
+        return ['success' => $success, 't' => $token];
     }
 
 

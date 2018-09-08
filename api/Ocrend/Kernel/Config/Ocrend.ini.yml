@@ -24,8 +24,8 @@ mailer:
   host: 
   user: 
   pass: 
-  port: 587
-  logo:
+  port: 587 
+  logo: 
   
 # Configuración del sitio
 build:

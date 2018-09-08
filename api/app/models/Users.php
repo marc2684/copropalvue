@@ -20,6 +20,10 @@ use Ocrend\Kernel\Models\Traits\DBModel;
 
 /**
  * Modelo Users
+ * 
+ * NOTA: Los intentos de inicio de sesión, funcionarán en el build de producción ya que se ejecutará en el mismo puerto
+ * y mantendrá la instancia de sesiones.
+ * 
  */
 class Users extends Models implements IModels {
     use DBModel;
@@ -234,9 +238,9 @@ class Users extends Models implements IModels {
      *
      * @return false|array con información del usuario
      */   
-    public function getUserById(int $id, string $select = '*') {
+    public function getUserById(int $id) {
         return $this->apiResponse(
-            $this->db->select($select,'users',null,"id_user='$id'",1),
+            $this->db->select('name,email','users',null,"id_user='$id'",1),
             true
         );
     }
@@ -248,7 +252,7 @@ class Users extends Models implements IModels {
      *
      * @return false|array con información de los usuarios
      */  
-    public function getUsers(string $select = '*') {
+    public function getUsers(string $select = 'name,email') {
         return $this->db->select($select, 'users');
     }
 
@@ -368,7 +372,7 @@ class Users extends Models implements IModels {
             # Generar token y contraseña 
             $token = md5(time());
             $pass = uniqid();
-            $link = $config['build']['url'] . 'lostpass?token='.$token.'&user='.$user_data[0]['id_user'];
+            $link = $config['build']['url'] . 'recovery?token='.$token.'&user='.$user_data[0]['id_user'];
 
             # Construir mensaje y enviar mensaje
             $HTML = 'Hola <b>'. $user_data[0]['name'] .'</b>, ha solicitado recuperar su contraseña perdida, si no ha realizado esta acción no necesita hacer nada.
@@ -446,7 +450,7 @@ class Users extends Models implements IModels {
         $token = $http->query->get('token');
 
         $success = false;
-        if (!Helper\Functions::emp($token) && is_numeric($id_user) && $id_user >= 1) {
+        /*if (!Helper\Functions::emp($token) && is_numeric($id_user) && $id_user >= 1) {
             # Filtros a los datos
             $id_user = $this->db->scape($id_user);
             $token = $this->db->scape($token);
@@ -455,7 +459,7 @@ class Users extends Models implements IModels {
             WHERE id_user='$id_user' AND token='$token' LIMIT 1;");
             # Éxito
             $success = true;
-        }
+        }*/
         
         return ['success' => $success];
     }

@@ -29,6 +29,7 @@ export const mutations = {
      * @param {*} router (this.$router) desde un beforeCreate() en el component 
      */
     onlyNotLogged(state, router) {
+        console.log(router);
         if(state.is_logged) {
             router.push('/')
         }

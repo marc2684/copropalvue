@@ -24,7 +24,7 @@ class Emails {
      * 
      * @var string
      */
-    const TEMPLATES_ROUTE = ___ROOT___ . 'assets/mail/';
+    const TEMPLATES_ROUTE = ___ROOT___ . 'content/mail/';
 
     /**
      * Lista de plantillas.

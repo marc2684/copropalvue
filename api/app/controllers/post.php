@@ -1,7 +1,7 @@
 <?php 
 
 /*
- * This file is part of the Ocrend Framewok 2 package.
+ * This file is part of the Ocrend Framewok 3 package.
  *
  * (c) Ocrend Software <info@ocrend.com>
  *
@@ -34,3 +34,14 @@ $app->post('/login', function(Request $http) use($app) {
     $u = new Model\Users;
     return $app->json($u->login());  
 });
+
+/**
+ * Solicita recuperar contraseña
+ * 
+ * @return json con información
+*/
+$app->post('/lostpass/send', function(Request $http) use($app) {
+    $u = new Model\Users;
+    return $app->json($u->lostpass());  
+});
+

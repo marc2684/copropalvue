@@ -1,5 +1,7 @@
 <template>
     <div class="box-ocrend">
+        <h1>Registro</h1>
+        <hr>
         <form role="form" id="registerform" @submit.prevent="register">
             <div>
                 <label>Nombre</label>

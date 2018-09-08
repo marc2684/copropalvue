@@ -43,6 +43,7 @@ function ___loadApi() {
     require 'app/ini.app.php';
     require 'app/controllers/get.php';
     require 'app/controllers/post.php';
+    require 'app/controllers/put.php';
 
     $app->run();
 }

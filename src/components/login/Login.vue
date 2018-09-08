@@ -1,5 +1,7 @@
 <template>
     <div class="box-ocrend">
+        <h1>Iniciar Sesión</h1>
+        <hr>
         <form role="form" id="loginform" @submit.prevent="login">
             <div>
                 <label>Email</label>
@@ -8,6 +10,9 @@
             <div>
                 <label>Contraseña</label>
                 <input type="password" name="pass" required />
+            </div>
+            <div>
+                <label><router-link to="/lostpass">¿Recuperar contraseña?</router-link></label>
             </div>
             <div>
                 <button type="submit">Iniciar Sesión</button>

@@ -151,9 +151,13 @@ class Users extends Models implements IModels {
     private function authentication(string $email,string $pass, int &$id_user) : bool {
         $email = $this->db->scape($email);
         $query = $this->db->select('id_user,pass','users',null, "email='$email'",1);
+
+        if(!$query){
+          return false;
+        }
         
         # Incio de sesión con éxito
-        if(false !== $query && Helper\Strings::chash($query[0]['pass'],$pass)) {
+        if(Helper\Strings::chash($query[0]['pass'],$pass)) {
 
             # Restaurar intentos
             $this->restoreAttempts($email);

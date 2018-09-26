@@ -4,6 +4,7 @@ import Login from './components/login/Login.vue'
 import Register from './components/register/Register.vue'
 import Lostpass from './components/lostpass/Lostpass.vue'
 import Recovery from './components/lostpass/Recovery.vue'
+import Catalogs from './components/catalogs/Catalogs.vue'
 
 export const routes = [
     { path: '/', component: Home },
@@ -11,12 +12,13 @@ export const routes = [
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     { path: '/lostpass', component: Lostpass },
-    { 
-        path: '/recovery', 
+    {
+        path: '/recovery',
         component: Recovery,
         props: (route) => ({
             token: route.query.token,
             user: route.query.user
-        }) 
-    }
+        })
+    },
+    { path: '/catalogos', component: Catalogs }
 ]

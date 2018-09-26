@@ -76,13 +76,15 @@ class Mssql extends \PDO implements Driver {
      * @return bool|stdClass
      */
     public function select(string $fields, string $table, $inners = null, $where = null, $limit = null, string $extra = '') {
-      $result = $this->query(
-      "SELECT "
+      $query = "SELECT "
       . (null !== $limit ? "TOP ($limit) " : '')
       . "$fields FROM $table $inners "
       . (null != $where ? "WHERE $where" : '') 
-      . " $extra "
-      );
+      . " $extra ";
+      
+      $result = $this->query($query);
+
+      // print_r($query);
 
       if(false != $result && sizeof($result)) {
         $matriz = (array) $result->fetchAll(PDO::FETCH_ASSOC);

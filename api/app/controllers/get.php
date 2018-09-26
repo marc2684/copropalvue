@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
  * @return json con información
  */
 $app->get('/', function(Request $http) use($app) {
-    return $app->json(['message' => 'Vue.js + OCREND FRAMEWORK 3 REST']);  
+    return $app->json(['message' => 'COPROPAL v 0.1']);  
 });
 
 /**

@@ -7,7 +7,7 @@
 
 # Configuración de la base de datos
 database:
-  default_driver: mysql
+  default_driver: mssql
   drivers:
     mssql:
       server: DELL-PC

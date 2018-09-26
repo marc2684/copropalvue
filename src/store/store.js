@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {mutations} from './mutations'
-import {actions} from './actions'
+import { mutations } from './mutations'
+import { actions } from './actions'
 
 Vue.use(Vuex);
 
@@ -14,14 +14,14 @@ export const store = new Vuex.Store({
          * 
          * @var bool
          */
-        is_logged : false,
+        is_logged: false,
 
         /**
          * Utilizado para tener la data del usuario conectado
          * 
          * @var object
          */
-        owner_user : null,
+        owner_user: null,
 
         /**
          * Path de ocrend framework.
@@ -29,7 +29,7 @@ export const store = new Vuex.Store({
          * 
          * @var string
          */
-        api : 'http://localhost/OCREND/vue-ocrend-framework/api/'
+        api: 'http://localhost/copropalvue/api/'
     },
     mutations,
     actions

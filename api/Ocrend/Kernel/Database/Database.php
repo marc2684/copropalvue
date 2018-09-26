@@ -10,6 +10,7 @@
  */
 
 namespace Ocrend\Kernel\Database;
+use  Ocrend\Kernel\Database\Drivers\Mssql\Mssql;
 use  Ocrend\Kernel\Database\Drivers\Mysql\Mysql;
 use  Ocrend\Kernel\Database\Drivers\Sqlite\Sqlite;
 
@@ -33,7 +34,9 @@ class Database {
 
         if($motor == 'mysql') {
             return new Mysql;
-        } 
+        }elseif ($motor == 'mssql') {
+            return new Mssql;
+        }
 
         return new Sqlite;
     }

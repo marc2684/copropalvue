@@ -9,11 +9,18 @@
 database:
   default_driver: mysql
   drivers:
+    mssql:
+      server: DELL-PC
+      instance: COMPAC
+      user: sa
+      pass: Compac08
+      name: COPROPAL
+      port: 1433
     mysql: 
       host: localhost
       user: root
       pass:
-      name: ocrend
+      name: copropal
       port: default
       socket: default
     sqlite3:
